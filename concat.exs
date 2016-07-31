@@ -8,7 +8,6 @@ end
 IO.puts Concat.join("Hello", "world")
 IO.puts Concat.join("Hello", "world", "_")
 
-
 # If a function with default values has multiple clauses,
 # it is required to create a function head (without an actual body) for declaring defaults:
 
