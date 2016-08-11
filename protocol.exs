@@ -56,7 +56,3 @@ defprotocol Blank do
   @fallback_to_any true
   def blank?(data)
 end
-
-
-  def blank?(_), do: false
-end
