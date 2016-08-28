@@ -1,0 +1,6 @@
+fizz_buzz = fn
+end
+
+defmodule monkey do
+end
+
