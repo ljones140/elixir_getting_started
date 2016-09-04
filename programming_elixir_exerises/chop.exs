@@ -1,23 +1,23 @@
 defmodule Chop do
-  def guess(number, range) do
+  def guess(actual, range) do
     first..last = range
     current_guess = div(first + last, 2)
     print_guess(current_guess)
-    check_guess(current_guess, range, number)
+    check_guess(current_guess, range, actual)
   end
 
-  defp check_guess(current_guess, _, number) when current_guess == number do
-    IO.puts current_guess
+  defp check_guess(actual, _, actual) do
+    IO.puts actual
   end
 
-  defp check_guess(current_guess, range, number) when current_guess > number do
+  defp check_guess(current_guess, range, actual) when current_guess > actual do
     first.._ = range
-    guess(number, first..(current_guess - 1))
+    guess(actual, first..(current_guess - 1))
   end
 
-  defp check_guess(current_guess, range, number) when current_guess < number do
+  defp check_guess(current_guess, range, actual) when current_guess < actual do
     _..last = range
-    guess(number, (current_guess + 1)..last)
+    guess(actual, (current_guess + 1)..last)
   end
 
   defp print_guess(guess), do: IO.puts "Is it #{guess}"
