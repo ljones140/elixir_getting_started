@@ -1,7 +1,6 @@
 defmodule Chop do
-  def guess(actual, range) do
-    first..last = range
-    current_guess = div(first + last, 2)
+  def guess(actual, range = low..high) do
+    current_guess = div(low + high, 2)
     print_guess(current_guess)
     check_guess(current_guess, range, actual)
   end
@@ -10,14 +9,12 @@ defmodule Chop do
     IO.puts actual
   end
 
-  defp check_guess(current_guess, range, actual) when current_guess > actual do
-    first.._ = range
-    guess(actual, first..(current_guess - 1))
+  defp check_guess(current_guess, low.._, actual) when current_guess > actual do
+    guess(actual, low..(current_guess - 1))
   end
 
-  defp check_guess(current_guess, range, actual) when current_guess < actual do
-    _..last = range
-    guess(actual, (current_guess + 1)..last)
+  defp check_guess(current_guess, _..high, actual) when current_guess < actual do
+    guess(actual, (current_guess + 1)..high)
   end
 
   defp print_guess(guess), do: IO.puts "Is it #{guess}"
