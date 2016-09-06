@@ -1,6 +1,6 @@
 defmodule Chop do
   def guess(actual, range = low..high) do
-    current_guess = div(low + high, 2)
+    div(low + high, 2)
     print_guess(current_guess)
     check_guess(current_guess, range, actual)
   end
