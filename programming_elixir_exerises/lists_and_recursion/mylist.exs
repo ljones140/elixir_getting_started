@@ -44,7 +44,7 @@ defmodule MyList do
 
   def split(list, count), do: _split(list, count,{ [], [] })
 
-  defp _split([], count, result), do: result
+  defp _split([], _count, result), do: result
   defp _split(list, count, result) when count < 0 do
     _split(list, length(list) + count, result)
   end
@@ -53,5 +53,17 @@ defmodule MyList do
   end
   defp _split([ head | tail ], count, { left, right }) do
     _split(tail, count, { left, right ++ [head]})
+  end
+
+  def take(collection, count), do: _take(collection, count, [])
+  defp _take([], _count, result), do: result
+  defp _take([ head | tail ], count, result) when count < 0 and length([head | tail]) <= abs(count) do
+    _take(tail, count, result ++ [head])
+  end
+  defp _take([ head | tail ], count, result) when length(result) < count do
+    _take(tail, count, result ++ [head])
+  end
+  defp _take([ _head | tail ], count, result) do
+    _take(tail, count, result)
   end
 end
