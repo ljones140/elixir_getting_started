@@ -36,9 +36,25 @@ defmodule MyList do
   def filter([], _func), do: []
   def filter([ head | tail ], func) do
     if func.(head) do
-      [ head | filter(tail, func)]
+      [ head | filter(tail, func) ]
     else
       filter(tail, func)
     end
+  end
+
+  def split(list, count), do: _split(list, count,{ [], [] })
+
+  defp _split([], count, result), do: result
+  defp _split([ head | tail ], count, { left, right }) when count >= 0 and length(left) < count do
+    _split(tail, count, { left ++ [head], right })
+  end
+  defp _split([ head | tail ], count, { left, right }) when count < 0 and length(right) < (count * -1) do
+    _split(tail, count, { left, right ++ [head]})
+  end
+  defp _split([ head | tail ], count, { left, right }) when count >= 0 do
+    _split(tail, count, { left, right ++ [head]})
+  end
+  defp _split([ head | tail ], count, { left, right }) do
+    _split(tail, count, { left ++ [head], right })
   end
 end
