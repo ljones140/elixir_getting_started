@@ -56,6 +56,7 @@ defmodule MyList do
   end
 
   def take(collection, count), do: _take(collection, count, [])
+
   defp _take([], _count, result), do: result
   defp _take([ head | tail ], count, result) when count < 0 and length([head | tail]) <= abs(count) do
     _take(tail, count, result ++ [head])
