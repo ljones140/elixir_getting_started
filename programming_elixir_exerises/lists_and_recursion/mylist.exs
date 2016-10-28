@@ -67,4 +67,27 @@ defmodule MyList do
   defp _take([ _head | tail ], count, result) do
     _take(tail, count, result)
   end
+
+  def big_list do
+    [
+      1,
+      [
+        [
+          2,
+          3,
+        ],
+        4,
+      ],
+    ]
+  end
+
+  def flatten(list), do: _flatten(list, [])
+
+  defp _flatten([], result), do: result
+  defp _flatten([ head | tail ], result) when is_list(head) do
+    _flatten(tail, _flatten(head, result))
+  end
+  defp _flatten([ head | tail ], result)  do
+    _flatten(tail, result ++ [head])
+  end
 end
