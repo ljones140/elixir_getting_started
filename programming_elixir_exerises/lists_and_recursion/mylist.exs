@@ -68,19 +68,6 @@ defmodule MyList do
     _take(tail, count, result)
   end
 
-  def big_list do
-    [
-      1,
-      [
-        [
-          2,
-          3,
-        ],
-        4,
-      ],
-    ]
-  end
-
   def flatten(list), do: _flatten(list, [])
 
   defp _flatten([], result), do: result
