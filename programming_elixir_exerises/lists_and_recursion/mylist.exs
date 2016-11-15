@@ -83,7 +83,7 @@ defmodule MyList do
     [ from | span(from + 1, to) ]
   end
 
-  def prime(number) do
+  def prime_numbers(number) do
     numbers = span(2, number)
     not_primes = for x <- numbers, y <- numbers, x != y, rem(x, y) == 0, do: x
     numbers -- not_primes
