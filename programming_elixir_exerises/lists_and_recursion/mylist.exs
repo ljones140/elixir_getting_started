@@ -77,4 +77,16 @@ defmodule MyList do
   defp _flatten([ head | tail ], result)  do
     _flatten(tail, result ++ [head])
   end
+
+  def span(from, to) when from > to, do: []
+  def span(from, to) do
+    [ from | span(from + 1, to) ]
+  end
+
+  def prime(number) do
+    numbers = span(2, number)
+    not_primes = for x <- numbers, y <- numbers, x != y, rem(x, y) == 0, do: x
+    numbers -- not_primes
+  end
+
 end
