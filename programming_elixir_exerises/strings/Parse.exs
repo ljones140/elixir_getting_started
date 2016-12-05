@@ -27,5 +27,33 @@ defmodule Parse do
   end
 
   defp _to_sorted_list(str), do: to_charlist(str) |> Enum.sort
+
+  def calculate(list), do: _calculate([], list)
+
+  defp _calculate(left, [ head | tail ]) when head in 48..57 do
+    _calculate(left ++ [head], tail)
+  end
+
+  defp _calculate(left, [ head | tail]) when head == 42 do
+    _to_num(left) * _to_num(tail)
+  end
+
+  defp _calculate(left, [ head | tail]) when head == 43 do
+    _to_num(left) + _to_num(tail)
+  end
+
+  defp _calculate(left, [ head | tail]) when head == 45 do
+    _to_num(left) - _to_num(tail)
+  end
+
+  defp _calculate(left, [ head | tail]) when head == 47 do
+    _to_num(left) / _to_num(tail)
+  end
+
+  defp _to_num(char_list) do
+   number_string =  to_string(char_list)
+   String.to_integer(number_string)
+  end
 end
+
 
