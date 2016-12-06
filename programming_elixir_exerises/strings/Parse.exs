@@ -59,7 +59,6 @@ defmodule Parse do
     max = Enum.map(words, &(String.length(&1))) |> Enum.max
     Enum.each(words, &(IO.puts String.rjust(&1, String.length(&1) + div(max - String.length(&1), 2))))
   end
-
 end
 
 
