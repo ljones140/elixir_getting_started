@@ -54,6 +54,12 @@ defmodule Parse do
    number_string =  to_string(char_list)
    String.to_integer(number_string)
   end
+
+  def centre(words) do
+    max = Enum.map(words, &(String.length(&1))) |> Enum.max
+    Enum.each(words, &(IO.puts String.rjust(&1, String.length(&1) + div(max - String.length(&1), 2))))
+  end
+
 end
 
 
