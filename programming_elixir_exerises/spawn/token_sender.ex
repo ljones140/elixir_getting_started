@@ -1,5 +1,11 @@
 # Exercise: ModulesAndFunctions-4
 
+# iex(1)> c "programming_elixir_exerises/spawn/token_sender.ex"
+# [TokenSender]
+# iex(2)> TokenSender.run
+# :fred
+# :betty
+#
 defmodule TokenSender do
   def process(send_to) do
     receive do
