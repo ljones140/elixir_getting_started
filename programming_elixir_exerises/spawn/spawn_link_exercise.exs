@@ -1,4 +1,4 @@
-# Exercise: WorkingWithMultipleProcesses-3
+# Exercise: WorkingWithMultipleProcesses-3,4 and 5
 # to run:
 # `$ elixir -r spawn_link_exercise.exs`
 
